@@ -25,6 +25,7 @@ funksjonen)
 console.log("Hei");
 function tallswap(number) {
   if (number % 2 === 0) {
+    //Sjekka om tallet kan delast på 2
     return "Partall";
   } else {
     return "Oddetall";
@@ -111,21 +112,14 @@ Eksempel 2: ["En", "To", "Tre", "Fire", "Fem", "Seks"] skal returnere
 let myArray = ["En", "To", "Tre", "Fire", "Fem", "Seks"];
 
 function popshifter(arr) {
-  let nyArray = arr.slice();
-  nyArray.shift();
-  nyArray.pop();
+  let nyArray = arr.slice(); //arr er midlertidig navn på arrayen inni funksjonen, og slice lager en kopi av arrayen
+  nyArray.shift(); //fjerner første
+  nyArray.pop(); //fjerner siste
 
-  return nyArray;
+  return nyArray; //nyArray er ein ny/redigert versjon
 }
 
 console.log(popshifter(myArray));
-
-/*function popshifter() {
-  let nyArray = [...myArray];
-  nyArray.shift(); 
-  nyArray.pop(); 
-  return nyArray;
-}*/
 
 /******************************************************************************
 5.
@@ -148,7 +142,7 @@ Eksempel 3: "   vanskelig        " skal returnere "gøy".
 
 // Skriv koden for oppgave 5 her
 function hypnotizer(talk) {
-  return talk.trim().replace("vanskelig", "gøy");
+  return talk.trim().replace("vanskelig", "gøy"); //trim fjerner mellomrom og replace erstatter første stringen (vanskelig) med den andre (gøy)
 }
 
 console.log(hypnotizer("  Javascript er vanskelig   "));
@@ -176,17 +170,17 @@ Ekstra utfordring: Lag et nytt array som kun inkluderer elementer som inneholder
 ******************************************************************************/
 
 // Skriv koden for oppgave 6 her
-items.shift();
+items.shift(); //fjerner første element
 console.log(items);
 
 let index = items.indexOf("Viskelær");
 if (index !== -1) {
-  items[index] = "Linjal";
+  items[index] = "Linjal"; // sjekka om viskelær finnes - hvis ja, erstatta den med linjal
 }
 
-items.splice(0, 2, "Markeringspenn");
+items.splice(0, 2, "Markeringspenn"); //fjerna penn og notatbok og lgger inn markeringspenn
 
-let joined = items.join(" | ");
+let joined = items.join(" | "); //Sammenslår alle element med " | " som mellomrom
 console.log("Sammenslått string:", joined);
 /******************************************************************************
 7.
@@ -214,11 +208,12 @@ Eksempel 4: (["En", "To", "Tre"], "To") --> ["En", "Tre"]
 
 // Skriv koden for oppgave 7 her
 function update(arr, str) {
+  //tar inn array og string som parameter og sjekker om string finnes i arrayet.
   if (arr.includes(str)) {
-    let index = arr.indexOf(str);
+    let index = arr.indexOf(str); //den finnes og da bruker eg indexOf for å finne posisjonen og fjerner det deretter med splice
     arr.splice(index, 1);
   } else {
-    arr.push(str);
+    arr.push(str); //hvis nei så legger eg den til med push
   }
 
   return arr;
